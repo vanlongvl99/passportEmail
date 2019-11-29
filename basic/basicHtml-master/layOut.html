@@ -1,0 +1,226 @@
+<!-- 
+visible;	Khi chiều cao của box không đủ chứa text, thì text vẫn hiển thị tràn qua box, đây là mặc định.
+hidden;	    Khi chiều cao của box không đủ chứa text, thì text bị tràn sẽ được dấu đi.
+scroll;	    Khi chiều cao của box không đủ chứa text, thì text bị tràn sẽ được dấu đi và xuất hiện thanh scroll, khi cuộn sẽ hiển thị text.
+auto;	    Khi chiều cao của box không đủ chứa text, thì thanh scroll sẽ tự động hiển thị.
+
+ -->
+
+
+
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>disignWeb</title>
+     <style>
+        .header {
+        padding-bottom: 10px;
+        text-align: center;
+        background-color: #f1f1f1;
+        height: 60px;
+     }
+         .row1{
+         background: white;
+         overflow: auto; 
+         width: 100%;
+     }
+     .rightLink {
+         float: right;
+         display: block;
+         text-align: center;
+         color: #414141;
+         padding: 16px 25px;
+         font-size: 19x;
+     }
+     .leftLink {
+         float: left;
+         display: block;
+         text-align: center;
+         color: #414141;
+         padding: 16px 25px;
+         font-size: 19x;
+
+     }
+     
+     body {
+         padding: 10px;
+         background: #f1f1f1;
+     }
+ 
+    .row2 {
+         overflow: auto; 
+         width: 100%;
+        
+    }
+     .leftColum1 {
+         float: left;
+         width: 50%;
+         display: block;
+         height: 400px;
+
+     }
+     .rightColum1 {
+         float: right;
+         width: 50% ;        
+         display: block;
+         /* width: 100%; */
+         height: 400px;
+
+     }
+     .im1 {
+         width: 100%;
+         height: 100%;
+     }
+     .card {
+         padding: 15px 80px;
+         width: 70%;
+     }
+     .site {
+         font-size: 48px;
+         line-height: 53px;
+         color: #414141;
+     }
+     .deDang {
+         font-size: 18px;
+         line-height: 26px;
+         color: #545454;
+         font-weight: bold ;
+     }
+     .cungNhau {
+         font-size: 16px;
+         line-height: 22px;
+         color: #545454;
+         /* text-align: center; */
+
+     }
+     .down {
+         /* display: block; */
+         background-color: white;
+         padding: 10px;
+         overflow: auto;
+         width: 100%;
+     }
+     .leftColum2 {
+         width: 50%;
+         float: left;
+     }
+     .taoTrang {
+         font-size: 30px;
+         line-height: 38px;
+         color: #414141;
+         font-weight: normal;
+         padding: 15px 80px;
+     }
+     .donGian {
+         font-size: 18px;
+         line-height: 26px;
+         color: #545454;
+         padding: 15px 80px;
+
+
+     }
+     .rightColum2 {
+         width: 50%;
+         float: right;
+     }
+     .im2 {
+         width: 100%;
+         height: 100%;
+     }
+     .end {
+         width: 100%;
+         overflow: auto;
+     }
+     .endText {
+         width: 33.33%;
+         float: left;
+         display: block;
+     }
+
+     .textEnd {
+         font-size: 18px;
+         line-height: 26px;
+         color: #414141;
+         font-weight: 400;
+         padding: 10px 50px;
+     }
+     .endText p {
+         font-size: 14px;
+         font-weight: 300;
+         line-height: 22px;
+         color: #545454;
+         padding: 10px 50px;
+     }
+     @media screen and (max-width: 500px) {
+         .leftColum1, .rightColum1 {
+             width: 100%;
+         }
+         
+     }
+     </style>
+ </head>
+ <body>
+     <div class="header">
+         <h1>My Website</h1>
+     </div>
+     <div class="row1">
+         <a class="leftLink" href="#">Tính năng</a>
+         <a class="leftLink" href="#">Giá cả</a>
+         <a class="leftLink" href="#">Bảo mật</a>
+         <a class="rightLink" href="#">Hỗ trợ</a>
+
+     </div>
+
+
+     <div clase="row2">
+         <div class="leftColum1">
+                <img class="im1" src="thiet-ke-1-website-don-gian-2.jpg" alt="Website">
+         </div>
+     
+         <div class="rightColum1">
+            <div class="card">
+                 <h2 class="site">Sites</h2>
+                 <p class="deDang">Dễ dàng tạo trang web nhóm có tác động mạnh</p>
+                 <p class="cungNhau">Cùng nhau tạo ra những trang web cuốn hút, có chất lượng cao cho nhóm, dự án hoặc sự kiện của bạn. Các trang web này có giao diện rất đẹp mắt trên mọi màn hình, từ máy tính để bàn cho đến điện thoại thông minh. Bạn có được tất cả những điều này mà không cần học cách thiết kế hoặc lập trình.</p>
+            </div>
+         </div>
+     </div>
+
+
+    <div class="down">
+         <div class="leftColum2">
+            <h2 class="taoTrang">Tạo trang web mà không cần có kỹ năng lập trình hoặc thiết kế</h2>
+            <p class="donGian" >Sites đơn giản hóa cách thể hiện công việc của nhóm bạn, với khả năng truy cập dễ dàng mọi nội dung của bạn từ G Suite, dù đó là thư mục Drive, Tài liệu hay thậm chí cả Lịch dùng chung.</p>
+        </div>
+         <div class="rightColum2">
+            <img class="im2" src="network.png" alt="Website">
+         </div>
+    </div>
+    <div class="end">
+        <div class="endText">
+            <h2 class="textEnd">Di chuyển, kéo và thả, chỉnh sửa, thế là xong</h2>
+            <p>Tạo và chỉnh sửa hết sức đơn giản: bạn chỉ cần nhấp, kéo hoặc thả. Thiết kế sẽ tự động sắp xếp lại với bố cục lưới. Mọi mục nằm gọn ghẽ ở nơi phù hợp nhất và dễ di chuyển, đổi kích thước hoặc sắp xếp lại.</p>
+        </div>
+
+
+
+        <div class="endText">
+            <h2 class="textEnd">Được thiết kế để cộng tác</h2>
+            <p>Sites giúp cộng tác trở nên thật dễ dàng nhờ có tính năng đồng chỉnh sửa trong thời gian thực và các điều khiển chia sẻ đa năng mà bạn đã quen thuộc trong Drive và Tài liệu. Giống như Tài liệu, bạn có thể cùng làm việc với mọi người và xem các thay đổi của nhau trong thời gian thực khi bạn nhập.</p>
+        </div>
+
+
+
+
+        <div class="endText">
+            <h2 class="textEnd">Bảo vệ trang web của bạn mà không cần đến bộ phận CNTT</h2>
+            <p>Người dùng có thể dễ dàng quản lý quyền chia sẻ và quyền sở hữu trong Sites chỉ bằng một vài cú nhấp chuột, như họ thường làm trong Tài liệu. Nội dung được nhúng giữ nguyên các quyền gốc giúp kiểm soát chi tiết, rất đáng tin cậy.</p>
+        </div>
+    </div>
+
+ 
+ </body>
+ 
+ 
+ </html>

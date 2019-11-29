@@ -1,0 +1,6 @@
+<% if(typeof errors != 'underfined') { %>
+    <% errors.forEach(function(error) { %>
+        <%= error.msg %>
+        <%errors.pop()%>
+    <% });%>
+<% } %>

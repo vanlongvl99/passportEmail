@@ -1,0 +1,193 @@
+<!Doctype html>
+<html>
+    <title>test</title>
+    <style>
+        .title {
+            height: 50px;
+            width: 100%;
+            background-color: #e1e1e1;
+            text-align: center;
+        }
+        #container {
+            width: 1200px;
+            height: 400px;
+            position: relative;
+            background: #21e7d7;
+            
+        }
+        #animate {
+            width: 28px;
+            height: 28px;
+            position: absolute;
+            background: red;
+            top: 320px;
+            left: 35px;
+            border-radius: 50%;
+            border: 3px solid blue;
+
+        }
+        #ground {
+            width: 100px;
+            height: 50px;
+            position: absolute;
+            background: #00ff00;
+            top: 350px;
+        }
+        .input {
+            display: block;
+            width: 100%;
+            height: 170px;
+        }
+        .inputVal {
+            float: left;
+            width: 30%;
+            padding: 20px 20px;
+        }
+        .checkabc {
+            padding: 20px 20px;
+            float: left;
+            width: 30%;
+        }
+        table, tr, td {
+            border: 1px solid black;
+        }
+    </style>
+<body>
+    <div class="title">
+        <h1> Bài Toán Ném Xiên</h1>
+    </div>
+    <div class="input">
+        <div class="inputVal">
+            <table>
+                <tr>
+                    <td><input type="number" placeholder="V0...(px/s)"   id="myV0"><br></td>
+                    <td><input type="number" placeholder="giaToc...px/s2" id="myGiaToc"><br></td>
+                </tr>
+                <tr>
+                    <td><input type="number" placeholder="gocBanDau...(do)  " id="myGoc"><br></td>
+                </tr>
+                <tr>
+                    <td><button type="button" onclick="myMove();">Get Value</button></td>
+                    <td><button type="button" onclick="reload()">reload</button></td>
+                </tr>
+            </table>
+        </div>
+        <div class="checkabc">
+            <table>
+                <tr><td><button type="button" onclick="checkvl()">checkValue</button></td></tr>
+                <tr>
+                    <td style="padding: 2px 10px;"><p>vận tốc Vy</p></td>
+                    <td style="padding: 2px 10px;"><p>Vận tốc vx</p></td>
+                    <td style="padding: 2px 10px;"><p>Tọa độ x</p></td>
+                    <td style="padding: 2px 10px;"><p>Tọa độ y</p></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;"><p id="vanTocVy"></p></td>
+                    <td style="text-align: center;"><p id="vanTocVx"></p></td>
+                    <td style="text-align: center;"><p id="ToaDoX"></p></td>
+                    <td style="text-align: center;"><p id="ToaDoY"></p></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div style="text-align: left;">
+        <p >Phạm vi có chiều rộng là 1200px và chiều cao là 400px</p>
+    </div>
+    <div id="container">
+    <div id="ground"></div>
+    <div id="animate"></div>
+    </div>
+    <p>Vị trí ban đầu: cao 2.5m, rộng 1.75m</p>
+    <p id=>Thời gian rơi:</p>
+    <p id="ThoiGian"></p>
+
+
+    <script>
+        function reload(){
+            document.location.reload();
+        }
+        var xpoint = 35
+        var ypoint = 320
+        var vx = 0
+        var vy = 0
+        var flag = 1
+        function checkvl(){
+            document.getElementById("vanTocVx").innerHTML = vx;
+            if (flag == 1){
+                document.getElementById("vanTocVy").innerHTML = vy;
+            }
+            else {
+                document.getElementById("vanTocVy").innerHTML = vyy;
+            }
+            document.getElementById("ToaDoX").innerHTML = xpoint;
+            document.getElementById("ToaDoY").innerHTML = ypoint;
+            // clearInterval(id);
+
+        }
+        function myMove() {
+            var v0Val = document.getElementById("myV0").value;
+            var giaTocVal = document.getElementById("myGiaToc").value;
+            var gocVal = document.getElementById("myGoc").value;
+            floatV0 = parseFloat(v0Val);
+            floatGiaToc = parseFloat(giaTocVal);
+            floatGoc = parseFloat(gocVal);
+            var elem = document.getElementById("animate");   
+            var time = 0;
+            var time1 = 0
+            var id = setInterval(frame, 10);
+            // var xpoint = 35
+            // var ypoint = 320
+            // var vx = 0
+            // var vy = 0
+            // var flag = 1
+            vx = floatV0*Math.cos((floatGoc/180)*3.14); // vx(px/s)
+            // function checkvl(){
+            //     document.getElementById("VanTocVx").innerHTML = vx;
+            //     if (flag == 1){
+            //         document.getElementById("vanTocVy").innerHTML = vy;
+            //     }
+            //     else {
+            //         document.getElementById("vanTocVy").innerHTML = vyy;
+
+            //     }
+            //     document.getElementById("ToaDoX").innerHTML = xpoint;
+            //     document.getElementById("ToaDoY").innerHTML = ypoint;
+            //     clearInterval(id);
+
+            // }
+            function frame() {
+                time = time + 1/100;
+                if (ypoint < 0){
+                    flag = 0
+                }
+                if (ypoint > 370) {
+                    document.getElementById("ThoiGian").innerHTML = time
+                    clearInterval(id);
+                }
+                else if (xpoint > 1170){
+                    ypoint = ypoint + 1;
+                    elem.style.top = ypoint + "px"; 
+                }
+                else if (flag == 0){
+                    time1 = time1 + 1/100
+                    vyy = -vy + floatGiaToc*time1;
+                    ypoint = -vy*time1 + 0.5*time1*time1*floatGiaToc;
+                    xpoint = 35 + vx*time;
+                    elem.style.top = ypoint + "px"; 
+                    elem.style.left = xpoint + "px"; 
+                }
+                
+                else if (flag == 1) {
+                    vy = -floatV0*Math.sin((floatGoc/180)*3.14) + floatGiaToc*time;
+                    ypoint = 320 - floatV0*Math.sin((floatGoc/180)*3.14)*time + 0.5*floatGiaToc*time*time;
+                    xpoint = 35 + vx*time;
+                    elem.style.top = ypoint + "px"; 
+                    elem.style.left = xpoint + "px"; 
+                }
+                
+            }    
+        }    
+    </script>
+    
+</body>
+</html>

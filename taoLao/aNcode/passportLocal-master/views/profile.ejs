@@ -1,0 +1,65 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Đăng nhập</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <!-- Google fonts - Open Sans-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,300,700,800,400italic">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="stylesheets/style.css" id="theme-stylesheet">
+    <!-- icon-->
+    <link rel="icon" href="images/icon.png">
+</head>
+<body>
+    <header class="header">
+            <div role="navigation" class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header"><a href="/" class="navbar-brand scroll-to"><img src="images/logo.png" alt="logo" class="hidden-xs hidden-sm" style="height:60px;"><span class="sr-only">Go to homepage</span></a>
+                  <div class="navbar-buttons">
+                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="pe-7s-menu"></i></button>
+                  </div>
+                </div>
+                <div id="navigation" class="collapse navbar-collapse navbar-right">
+                  <a href="/logout" class="btn navbar-btn btn-ghost" style="margin-left: 20px">Đăng xuất</a>
+                </div>
+              </div>
+            </div>
+    </header>
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2">
+            <center><h1 style="margin-top: 50px"><span></span> Thông tin tài khoản</h1></center>
+            <div class="alert alert-info">
+                <p>
+                    <strong>id</strong>: <%= user.id %><br>
+                    <strong>username</strong>: <%= user.username %><br>
+                    <strong>password</strong>: <%= user.password %>
+                </p>
+            </div>
+            <div class="text-center">
+                <a href="/logout" class="btn btn-default btn-sm">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+        <!--footer-->
+        <footer class="footer" style="margin-top: 230px">
+          <div class="footer__copyright">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                  <p>&copy;2018 Phan Bảo Nguyên</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!-- 
+Writing     into an HTML element, using innerHTML.
+Writing     into the HTML output using document.write().
+Writing     into an alert box, using window.alert().
+Writing     into the browser console, using console.log().
+debugger	Stops the execution of JavaScript, and calls (if available) the debugging function
+
+The typeof  operator can return one of these primitive types:
+string
+number
+boolean
+undefined
+
+HTML Event:
+onchange	An HTML element has been changed
+onclick	    The user clicks an HTML element
+onmouseover	The user moves the mouse over an HTML element
+onmouseout	The user moves the mouse away from an HTML element
+onkeydown	The user pushes a keyboard key
+onload	    The browser has finished loading the page
+
+
+string method:
+The search() method cannot take a second start position argument.
+The indexOf() method cannot take powerful search values (regular expressions).
+slice(start, end)
+substring(start, end) // similar with slice but it can not accept the nagative indexes
+substr(start, length)  // similar with slice but the second index specifies the length of extracted part
+replace(first value, second value) replaces the first value to the second value
+
+
+DOM:
+DOM document:   có nhiệm vụ lưu trữ toàn bộ các thành phần trong tài liệu của website
+DOM element:    có nhiệm vụ truy xuất tới thẻ HTML nào đó thông qua các thuộc tính như tên class, id, name của thẻ HTML
+DOM HTML:       có nhiệm vụ thay đổi giá trị nội dung và giá trị thuộc tính của các thẻ HTML
+DOM CSS:        có nhiệm vụ thay đổi các định dạng CSS của thẻ HTML
+DOM Event:      có nhiệm vụ gán các sự kiện như onclick(), onload() vào các thẻ HTML
+DOM Listener:   có nhiệm vụ lắng nghe các sự kiện tác động lên thẻ HTML đó
+getElementsByName(name)	    Tham chiếu đến tất cả các nút có thuộc tính name cần tìm.
+getAttribute(attributeName)	Lấy giá trị của thuộc tính.
+setAttribute(attributeName, value)	Sửa giá trị của thuộc tính. 
+
+Finding HTML Elements:
+document.getElementById(id)	            Find an element by element id
+document.getElementsByTagName(TagName)	    Find elements by tag name
+document.getElementsByClassName(name)	Find elements by class name
+
+Changing HTML Elements:
+element.innerHTML = new html content	Change the inner HTML of an element
+element.attribute = new value	        Change the attribute value of an HTML element
+element.style.property = new style	    Change the style of an HTML element
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  background: yellow;
+}
+#animate {
+  width: 20px;
+  height: 20px;
+  top: 380px;
+  position: absolute;
+  background-color: red;
+}
+</style>
+</head>
+<body>
+    <h2>Finding HTML Elements Using document.forms</h2>
+    <form id="frm1" action="/action_page.php">
+      First name: <input type="text" name="fname" value="Donald"><br>
+      Last name: <input type="text" name="lname" value="Duck"><br><br>
+      <input type="submit" value="Submit">
+    </form> 
+    
+    <p>Click "Try it" to display the value of each element in the form.</p>
+    
+    <button onclick="myFunction()">Try it</button>
+    
+    <p id="demo"></p>
+    
+    <script>
+    function myFunction() {
+      var x = document.forms["frm1"];
+      var text = "";
+      var i;
+      for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value + "<br>";
+      }
+      document.getElementById("demo").innerHTML = text;
+    }
+    </script>
+     
+     
+    
+    
+      
+    
+     </script>
+    
+</body>
+
+</html>
+

@@ -1,0 +1,58 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Đăng nhập</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <!-- Google fonts - Open Sans-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,400italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,300,700,800,400italic">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="stylesheets/style.css" id="theme-stylesheet">
+    <!-- icon-->
+    <link rel="icon" href="images/icon.png">
+</head>
+<body>
+    <header class="header">
+            <div role="navigation" class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header"><a href="/" class="navbar-brand scroll-to"><img src="images/logo.png" alt="logo" class="hidden-xs hidden-sm" style="height:60px;"><span class="sr-only">Go to homepage</span></a>
+                  <div class="navbar-buttons">
+                    <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle navbar-btn">Menu<i class="pe-7s-menu"></i></button>
+                  </div>
+                </div>
+                <div id="navigation" class="collapse navbar-collapse navbar-right">
+                  <ul class="nav navbar-nav">
+                    <li><a href="/" class="scroll-to">Trang chủ</a></li>
+                    <li><a href="/signin" class="scroll-to">Đăng nhập</a></li>
+                  </ul>
+                  <a href="/profile" class="btn navbar-btn btn-ghost" style="margin-left: 20px">Profile</a>
+                </div>
+              </div>
+            </div>
+    </header>
+    <section id="intro" class="text-intro no-padding-bottom" style="padding-bottom:10px;padding-left:5%;padding-right:5%;min-height:587px;">
+      <!--background and label-->
+      <div class="container" style="">
+        <div class="row" style="margin-top:-70px;">
+          <div class="col-md-12">
+            <h2>Authentication với ExpressJS, Passportjs and MySQL</h2>
+            <h3>Passport-local</h3>
+            <div class="text-center">
+                <p>Đăng nhập hoặc đăng ký</p>
+                <a href="/signin" class="btn btn-ghost"><span class="fa fa-user"></span> Đăng nhập</a>
+                <a href="/signup" class="btn btn-ghost"><span class="fa fa-user"></span> Đăng ký</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</body>
+</html>
