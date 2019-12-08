@@ -1,0 +1,20 @@
+{
+  "name": "nodePass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "nodemailer": "^6.3.1",
+    "uuid": "^3.3.3"
+  }
+}

@@ -60,48 +60,42 @@ Khi thực hiện gửi thông tin đăng nhập tại đường dẫn, thì hà
 Và để có phương thức xác thực thông tin người dùng gửi đến thì hàm Passport.use(new LocalStrategy … ) được thực thi. Tại đây ta thực hiện truy vấn cơ sở dữ liệu và so sánh thông tin đăng nhập của người dùng có đúng hay không.
 
 ````
- passport.use(
-        'local-login',
-        new LocalStrategy({
-            // by default, local strategy uses username and password, we will override with email
-            usernameField : 'username',
-            passwordField : 'password',
-            passReqToCallback : true // allows us to pass back the entire request to the callback
-        },
-        function(req, username, password, done) { // callback with email and password from our form
-            connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
-                if (err)
-                    return done(err);
-                if (!rows.length) {
-                    return done(null, false);
-                }
+passport.use(
+      'local-login',
+      new localstragtegy({
+          // ??? chưa hiểu khúc này có ý nghĩa gì???
+          usernameField : 'username',
+          passwordField : 'password',
+          passReqToCallback : true 
+      },
+      function(req, username, password, done) { // callback với username và password đã điền để kiểm tra trong database
+        // kiểm tra có tồn tại username trong database k
+        connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows){
+              if (err)
+                  return done(err);
+              if (!rows.length) {
+                  errors.push({msg: 'Username not found'})
+                  return done(null, false); // req.flash is the way to set flashdata using connect-flash
+              }
+              if (rows[0].confirm != 'true'){
+                  errors.push({msg: 'Username chua confirm'})
+                  console.log('chua confirm')
+                  return done(null, false)
+              }
+              // ?????? kiểm tra password ( nhưng chưa hiểu cú pháp này)
+              if (!bcrypt.compareSync(password, rows[0].password)){
+                errors.push({msg: 'Wrong password'})
+                return done(null, false); // create the loginMessage and save it to session as flashdata
 
-                // if the user is found but the password is wrong
-                if (!bcrypt.compareSync(password, rows[0].password))
-                    return done(null, false);
-
-                // all is well, return successful user
+              }
+              // hoàn tất
+                console.log('hoan tat')
                 return done(null, rows[0]);
-            });
-        })
-    );
-````
 
-Nếu thành công thì hàm Passport.serializeUser() được thực hiện và ghi một giá trị đại diện cho người dùng thực hiện yêu cầu đăng nhập đó vào trong trình duyệt và lưu vào trong cokie.
-
-##### serializeUser and deserialize the user
-    ````
-        // used to serialize the user for the session
-        passport.serializeUser(function(user, done) {
-            done(null, user.id);
-        });
-
-        // used to deserialize the user
-        passport.deserializeUser(function(id, done) {
-            connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
-                done(err, rows[0]);
-            });
-        });
+          });
+      })
+  );
+};
     ````
 Và tại các lần gửi yêu cầu khác, trình duyệt sẽ gửi giá trị cokie hồi nãy đã ghi vào đại diện cho người dùng và sẽ được lấy ra bởi hàm .deserializeUser(). Các yêu cầu người dùng gửi đến lần sau sẽ không cần phải thực hiện đăng nhập nữa.
 
@@ -148,3 +142,38 @@ module.exports = {
     npm start
     ````
 ## Nodemailer
+const output = `
+                                      <p>You have a new contact request</p>
+                                      <h3>Hello. You have to confirm the acount </h3>
+                                      <ul>  
+
+                                      </ul>
+                                      <p>Please click on this link to access your acount</p>
+                                        <h1>http://localhost:${port}/${username}/${linkConfirm}</h1>
+                                    `;
+                    // console.log('xong output')
+                    const transporter = nodemailer.createTransport({
+                        service: 'Gmail',
+                        auth: {
+                            user: 'nguyenvanlongt2@gmail.com', // generated ethereal user
+                            pass: '01665596604'  // generated ethereal password
+                        },
+                        tls:{
+                          rejectUnauthorized:false
+                        }
+                      });
+                    // console.log('xong createTransport')
+                    const mailOptions = {
+                        from: '"Nodemailer Contact" <nguyenvanlongt2@gmail.com>', // sender address
+                        to: 'longvlxx99@gmail.com', // list of receivers
+                        subject: 'Node Contact Request', // Subject line
+                        text: 'Hello world?', // plain text body
+                        html: output // html body
+                    };
+                    // console.log('send mail')
+                    transporter.sendMail(mailOptions, (error, info) => {
+                        if (error) {
+                            return console.log('loi roi', error);
+                        }
+                    
+                    console.log('send mail success')})
