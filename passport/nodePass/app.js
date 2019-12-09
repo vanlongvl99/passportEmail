@@ -6,9 +6,10 @@ var app = express();
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
+port = 4000
 
 var bodyparser = require('body-parser');
-var port = process.env.port || 4000 ;
+// var port = process.env.port || 4000 ;
 var errors = []
 require('./config/passport')(passport, port, app, errors);
 
@@ -42,5 +43,5 @@ app.use(passport.session()); // persistent login sessions
 require('./routes/users')(app, passport, errors)
 
 
-
-app.listen(port, console.log("server started on port "));
+    
+app.listen(port, console.log("server started on port ", + port));

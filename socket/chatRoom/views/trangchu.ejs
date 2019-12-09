@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuli.js"></script>
+    <link rel="stylesheet" type="text/css" href="layout.css" />
+  </head>
+  <body>
+    <input type="text" id="txtRoom" />
+    <input type="button" id="btnTaoRoom" value="Tạo room">
+    <div id="left">
+        <h4>Room hien co</h4>
+        <div id="listRoom"></div>
+    </div>
+    <div id="right">
+        <h5 id="currentRoom">....</h5>
+        <div id="contentChat">content Chat</div>
+        <div>
+            <input type="text" id="eachChat"/>
+            <input type="button" id="btnEachChat" value="send"/>
+
+        </div>
+    </div>
+</body>
+</html>

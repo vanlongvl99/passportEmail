@@ -6,7 +6,7 @@ app.set("views", "./views");
 
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-server.listen(2000);
+server.listen(4002);
 
 var mangChat=[]
 
@@ -22,7 +22,10 @@ io.on("connection", function(socket){
     for(r in socket.adapter.rooms){
       mang.push(r);
     }
-    io.sockets.emit("server-send-rooms", mang);
+    // io.sockets.emit("server-send-rooms", mang);
+    usersRoom = io.sockets.clients(data)
+    io.sockets.emit("server-send-user-in-room", usersRoom);
+
     socket.emit("server-send-room-socket", data);
 
   });

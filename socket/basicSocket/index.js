@@ -17,10 +17,10 @@ var io = require('socket.io')(server)
 server.listen(port)
 io.on("connection", function(socket){
     console.log("co nguoi ket noi: " + socket.id)
-    socket.on("client-send-mau", function(data){
-        console.log("nhan data: " + data)
-        io.sockets.emit("server-send-mau", data)
-    })
+    // socket.on("client-send-mau", function(data){
+        // console.log("nhan data: " + data)
+        // io.sockets.emit("server-send-mau", data)
+    // })
 })
 
 app.get('/', function(req, res){

@@ -1,10 +1,14 @@
-var socket = io("http://localhost:2000");
+var socket = io("http://localhost:4002");
 
-socket.on("server-send-rooms", function(data){
+socket.on("server-send-user-in-room", function(data){
   $("#dsRoom").html("");
-  data.map(function(r){
-    $("#dsRoom").append("<h4 class='room'>" + r + "</h4>");
+  data.forEach(i => {
+    $("#dsRoom").append("<h4 class='room'>" + i + "</h4>");
+
   });
+  // data.map(function(r){
+    // $("#dsRoom").append("<h4 class='room'>" + r + "</h4>");
+  // });
 });
 
 socket.on("server-send-room-socket", function(data){

@@ -1,0 +1,9 @@
+body{background-color: rgba(218, 228, 230, 0.712);}
+#left{width: 20%;float: left;}
+#listRoom{border: solid 1px black;}
+#right{width: 80%; float: right;}
+#currentRoom{float: right;padding-right: 20px;}
+#contentChat{padding: 30px 0px;}
+
+
+
