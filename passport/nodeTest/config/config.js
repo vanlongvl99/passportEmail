@@ -7,7 +7,7 @@ module.exports = {
         'user': 'root',
         'password': 'vanlong99'
     },
-    'database': 'confirmEmail',
-    'usersTable': 'users'
-    
+    'database': 'passport',
+    'usersTable': 'users',
+    'roomsTable': 'listRoom'
 }

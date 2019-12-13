@@ -13,6 +13,14 @@ console.log(dbcofig.usersTable);
 connection.query('CREATE TABLE ' + dbcofig.usersTable + ' ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
                                             `username` CHAR(60) NOT NULL, \
                                             `password` CHAR(60) NOT NULL, \
+                                            `confirm` CHAR(60) NOT NULL, \
+                                            `code` INT , \
+                                            PRIMARY KEY (`id`),\
+                                            UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
+                                            UNIQUE INDEX `username_UNIQUE` (`username` ASC) \
+                                            ) ;' );
+connection.query('CREATE TABLE ' + dbcofig.roomsTable + ' ( `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, \
+                                            `nameRoom` CHAR(60) NOT NULL, \
                                             PRIMARY KEY (`id`),\
                                             UNIQUE INDEX `id_UNIQUE` (`id` ASC), \
                                             UNIQUE INDEX `username_UNIQUE` (`username` ASC) \

@@ -1,7 +1,7 @@
 <div class="row mt-5">
     <div class="col-md-6 m-auto">
       <div class="card card-body">
-        <h5 style="color: red; background-color: lightcoral;"><% include ./messages %></h5>
+        <h5 style="color: red; "><% include ./messages %></h5>
         <form action="/users/changePassword" method="POST">
           <div class="form-group">
             <label for="username">Tên đăng nhập:</label>
@@ -31,6 +31,8 @@
             Xác nhận
           </button>
         </form>
+        <p >Quay lại trang chủ <a href="/users">Trang chủ</a>
+        </p>
       </div>
     </div>
   </div>

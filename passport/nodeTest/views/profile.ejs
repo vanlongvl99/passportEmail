@@ -1,19 +1,45 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div style="background-color: #cbe9f1;" class="card card-body">
-      <h1 style="color: green;" class="text-center mb-3">
-         Success
-      </h1>
-      <p style="color: blue;" class="lead mb-3">Welcome %></p>
-      <p style="color: blue;" class="lead mb-3">Username: <%= user.username %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <script></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="xuli.js"></script>
+  <script src="jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="layout.css" />
+</head>
+<body style="background-color: #f5e9e9;">
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto" >
+      <div style="background-color: #cbe9f1;" class="card card-body">
+        <h1 style="color: green;" class="text-center mb-3">
+           Đăng nhập thành công
+        </h1>
+        <p style="color: blue;" class="lead mb-3">Welcome %></p>
+        <p style="color: blue;" class="lead mb-3">Username: <%= user.username %></p>
+        <p class="lead mt-4">
+             <a href="/users/logout">Đăng xuất</a><br>
+             <a href="/users/changePassword">Đổi mật khẩu</a>
+          </p>
+      </div>      
+    </div>
+    <div class="col-md-6 m-auto" >
+      <!-- <div class="col-md-6 m-auto" > -->
+          <input type="text" id="createRoom">
+      <input type="button" id="btnRoom1" value="Tạo phòng">
+      <input type="text" id="joinRoom">
+      <input type="button" id="btnRoom2" value="Vào phòng">
+
+      <h5>Room hiện có</h5>
+      <div id="listRooms"></div>
     </div>
   </div>
-  <div class="text-center">
-    <div style="background-color: #cbe9f1;" class="card card-body">
-      <a href="/users/logout" style="font-size: 14px;padding: 5px 10px; text-align: center; border: 1px solid rgb(20, 41, 48) ">Đăng xuất</a>
-      <a href="/users/changePassword">Đổi mật khẩu</a>
-    </div>
-  </div>
-</div>
+</body>
+</html>
+
+
+
+
 
 

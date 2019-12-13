@@ -6,12 +6,14 @@ var app = express();
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
+const server = require('http').Server(app)
+const io = require("socket.io")(server)
 
 var bodyparser = require('body-parser');
-var port = process.env.port || 2000 ;
+var port = process.env.port || 3003 ;
 var errors = []
 require('./config/passport')(passport, port, app, errors);
-
+app.use(express.static("public"))
 app.use(logger('dev'));
 
 //get input of form
@@ -43,4 +45,13 @@ require('./routes/users')(app, passport, errors)
 
 
 
-app.listen(port, console.log(`server started on port: ${port}`));
+
+server.listen(port, console.log(`server started on port: ${port}`))
+io.on("connection", function(socket){
+    socket.on('client-send-create-room', function(data){
+        console.log('client gui data ne: ' + data)
+    })
+})
+
+
+

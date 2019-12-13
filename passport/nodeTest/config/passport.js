@@ -22,10 +22,6 @@ module.exports = function(passport, port, app, errors) {
             done(err, rows[0]);  //???
         });
     });
-
-
-
-
      // =====================
     // LOCAL SIGNUP =========
     // ======================
@@ -41,9 +37,6 @@ module.exports = function(passport, port, app, errors) {
         },
         function(req, username, password, done) {
             // console.log("check_username")
-            
-            
-
             // kiểm tra xem username đã được tạo trước đó chưa
             //?????? k hiểu các phần return, cú pháp, cái gì sẽ nhận phần return đó // phần autheticate sẽ nhận return để biết success or fail
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) {
@@ -57,7 +50,7 @@ module.exports = function(passport, port, app, errors) {
                 else {
                     const linkConfirm = uuid()
                     app.get( `/${username}/${linkConfirm}`, (req, res) => {
-                        connection.query("UPDATE users SET confirm = 'true' WHERE username = ?",[username])
+                        connection.query("UPDATE users SET confirm = 'done' WHERE username = ?",[username])
                         res.redirect('/users')
                     })
                     const output = `
@@ -80,7 +73,7 @@ module.exports = function(passport, port, app, errors) {
                     // console.log('xong createTransport')
                     const mailOptions = {
                         from: '"Nodemailer Contact" <nguyenvanlongt2@gmail.com>', // sender address
-                        to: 'longvlxx99@gmail.com', // list of receivers
+                        to: `${username}`, // list of receivers
                         subject: 'Node Contact Request', // Subject line
                         text: 'Hello world?', // plain text body
                         html: output // html body
@@ -95,10 +88,8 @@ module.exports = function(passport, port, app, errors) {
                     const newUserMysql = {
                         username: username,
                         password: bcrypt.hashSync(password, null, null), // mã hóa password
-                        confirm: 'false'
+                        confirm: 'yet'
                     };
-                    
-
                     // add infor vô database
                     // console.log("add infor");
                     const insertQuery = "INSERT users (username, password, confirm) values (?,?,?)";
@@ -130,10 +121,11 @@ module.exports = function(passport, port, app, errors) {
               if (err)
                   return done(err);
               if (!rows.length) {
+                  console.log( 'Username not found')
                   errors.push({msg: 'Username not found'})
                   return done(null, false); // req.flash is the way to set flashdata using connect-flash
               }
-              if (rows[0].confirm != 'true'){
+              if (rows[0].confirm != 'done'){
                   errors.push({msg: 'Username chua confirm'})
                   console.log('chua confirm')
                   return done(null, false)
@@ -145,7 +137,7 @@ module.exports = function(passport, port, app, errors) {
 
               }
               // hoàn tất
-                console.log('hoan tat')
+                console.log('hoan tat login')
                 return done(null, rows[0]);
 
           });
