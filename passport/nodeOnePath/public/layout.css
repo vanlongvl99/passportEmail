@@ -1,0 +1,96 @@
+
+body{
+  background-color: #dee6e3;
+}
+
+.menu {
+    float:left;
+    width:20%;
+    text-align:center;
+  }
+  .menu a {
+    background-color:#e5e5e5;
+    padding:8px;
+    margin-top:7px;
+    display:block;
+    width:100%;
+    color:black;
+  }
+  .main {
+    float:left;
+    width:60%;
+    padding:0 20px;
+  }
+  .right {
+    background-color:#e5e5e5;
+    float:left;
+    width:20%;
+    padding:15px;
+    margin-top:7px;
+    text-align:center;
+  }
+  
+  @media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
+      width:100%;
+    }
+  }
+  .textChat{
+    padding: 10px 10px;
+    overflow: auto;
+  }
+  #inputText{
+
+  }
+  #sendText {
+
+  }
+  #usernameChat{
+    font-size: 20px;
+  }
+  #roomSpace {
+    width: 30%;
+    float: left;
+  }
+  #chatSpace{
+    width: 70%;
+    float: right;
+  }
+  #newRoomcreate{
+    padding: 10px 20px;
+  }
+  .usernameC{
+    color: blue;
+    font-size: 20px;
+    align-items: flex-end;
+  }
+  #nameUser{
+    float: right;
+  }
+  .containerChat {
+    border: 2px solid #dedede;
+    border-color: #ccc;
+    background-color: #ddd;    
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  .containerChat::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  .time-right {
+    float: right;
+    color: #aaa;
+    font-size: 12px;
+  }
+  .chatContext{
+    background-color: aqua;
+    border-color: #ccc;
+    border-radius: 5px;
+    height: 400px;
+    overflow: scroll;
+  }
+

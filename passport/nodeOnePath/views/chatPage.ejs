@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <script></script>
+  <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuliChatPage.js"></script>
+  <link rel="stylesheet" type="text/css" href="layout.css" />
+</head>
+<body >
+  <div id="roomSpace" >
+    <p id="newRoomcreate">Bạn muốn tạo phòng mới?</p>
+      <form method="get" action="/roomChat">
+        <input type="text" id="createRoom">
+        <button type="submit" id="btnCreateRoom" >Tạo phòng</button>
+      </form>
+    <h5>Room hiện có</h5>
+    <div id="listRooms">
+      <form action="/roomChat">
+        <select name="rooms" id="selectRoom" size="5">
+          <option value="room1">room1</option>
+        </select>
+        <button type="submit" id="btnchooseRoom">Chọn Room</button>
+      </form>
+      <a href="/users">Về trang chủ</a>
+    </div>
+  </div>
+  <div id="nameUser">
+    <p class="usernameC">username: <span id="usernameChat"><%= user.username %></span></p>
+
+  </div>
+  <div id="chatSpace">
+    <div class="col-md-6 m-auto"  >
+        <div class="chatContext" >
+          <h3 style="align-content: center;">Content Chat</h3>
+          <div id="textChat" >
+            <div class="containerChat">
+              <p>long1: Hello. How are you today?</p>
+              <span class="time-right">11:00</span>
+            </div>
+
+          </div>
+        </div>
+        <input type="text" id="inputText">
+        <button type="submit" id="sendText">Send</button>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
