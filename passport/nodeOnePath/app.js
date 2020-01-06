@@ -14,7 +14,7 @@ const connection = mysql.createConnection(dbconfig.connect)
 connection.query("use " + dbconfig.database)
 
 var bodyparser = require('body-parser');
-var port = process.env.port || 3001 ;
+var port = process.env.port || 4001 ;
 var errors = []
 
 
@@ -56,7 +56,9 @@ server.listen(port, console.log(`server started on port: ${port}`))
 var currentRoom = ''
 // var usersSocket = io
 // var ioChat = io.of("/roomChat")
-io.on("connection", function(socket){
+io.of('/roomChat').on("connection", function(socket){
+    // console.log(socket.adapter.rooms)
+
     console.log("hello user socket")
     connection.query('select *from listRoom;', function(err, rows){
         console.log('vo listRoom r ne')
@@ -65,9 +67,16 @@ io.on("connection", function(socket){
     })
     socket.on('client-send-create-room', function(data){
         console.log("hello tao room ne")
-        console.log('client gui data ne: ' + data.roomName)
-        console.log('client gui data ne: ' + data.user)
+        console.log('client gui data roomname ne: ' + data.roomName)
+        console.log('client gui data ne: ' + data.user + 'tao room ne')
         socket.join(data.roomName)
+        io.of('/roomChat').on('connection', function(socket){
+            console.log('room spacename')
+            socket.join(data.roomName)
+        })
+        // console.log(socket)
+
+
         socket.Room = data.roomName
         currentRoom = data.roomName
         connection.query('select * from listRoom where nameRoom = ?;', [data.roomName], function(err, rows){
@@ -83,7 +92,7 @@ io.on("connection", function(socket){
                 connection.query('insert listRoom (nameRoom) values (?) ;', [data.roomName])
                 connection.query('select *from listRoom;', function(err, rows){
                     console.log('vo listRoom r ne')
-                    console.log(rows)
+                    // console.log(rows)
                     socket.broadcast.emit('new-room-was-created',rows)
                 })
                 connection.query('create table '+data.roomName+' (`username` CHAR(60) NOT NULL, \
@@ -94,7 +103,6 @@ io.on("connection", function(socket){
             }
         })
     })
-   
     console.log('hello chat socket')
     socket.on('client-send-text-chat', function(data){
         console.log('chat send data')
@@ -109,18 +117,14 @@ io.on("connection", function(socket){
             console.log('vo dc database')
             // console.log(JSON.stringify(rows))
             console.log(`nameRoom la: ${currentRoom}`)
+            // console.log(JSON.stringify(socket.adapter.rooms))
+            // console.log(socket.adapter.rooms[currentRoom])
             console.log(socket.adapter.rooms)
-            console.log(socket.rooms)
+            // console.log(socket.rooms)
             roomID = Object.keys(socket.rooms)
             console.log(`id of socket: ${socket.id}`)
-            io.clients((err, clients)=>{  // check how many clients in room
-                if (err) throw err
-                console.log(`list clients in ${currentRoom} are: ${clients}`)
-                clients.forEach(client => {
-                    io.sockets.to(client).emit('server-send-text-to-clients',rows)                    
-                });
-            })
-            // io.sockets.in(currentRoom).emit('server-send-text-to-clients',rows)
+            // io.of('/roomChat').in(currentRoom).emit('server-send-text-to-clients',rows)
+            io.of('/roomChat').to(currentRoom).emit('server-send-text-to-clients',rows)
 
         })
     })

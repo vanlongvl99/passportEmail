@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  
+    <title>users</title>
+    <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var user = io('http://localhost:3003/users')
+    
+    $(document).ready(function(){
+        $("#usersClient").click(function(){
+            // console.log('click')
+            user.emit('user-client-send', 'user-hello')
+        })
+    })
+    
+    
+    
+    </script>
+
+
+</head>
+<body>
+    <p>hello</p>
+    <input type="button" name="send" id="usersClient">
+</body>
+</html>

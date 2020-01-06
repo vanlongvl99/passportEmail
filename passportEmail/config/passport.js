@@ -40,6 +40,7 @@ module.exports = function(passport, port, app, errors) {
         // console.log('register ne'),
         new localstragtegy({
             //????? không hiểu tại sao lại khởi tạo ntn // vì mặc định nó là vậy
+            emailFiedld: 'email',
             usernameField : 'username',
             passwordField : 'password',
             passReqToCallback : true 
@@ -48,7 +49,9 @@ module.exports = function(passport, port, app, errors) {
             // console.log("check_username")
             
             
-
+            console.log(`email ne: ${req.body.email}`)
+            console.log(`username ne: ${username}`)
+            console.log(`mat kahu ne: ${password}`)
             // kiểm tra xem username đã được tạo trước đó chưa
             //?????? k hiểu các phần return, cú pháp, cái gì sẽ nhận phần return đó // phần autheticate sẽ nhận return để biết success or fail
             connection.query("SELECT * FROM users WHERE username = ?",[username], function(err, rows) {

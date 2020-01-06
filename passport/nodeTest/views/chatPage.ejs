@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <script></script>
+  <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuliChatPage.js"></script>
+  <link rel="stylesheet" type="text/css" href="layout.css" />
+</head>
+<body style="background-color: #f5e9e9;">
+  <div class="row mt-5">
+    <p style="color: blue;" id="usernameChat"><%= user.username %></p>
+    <div class="col-md-6 m-auto" >
+        <div style="height: 400px; background-color: #9ad2e7;">
+          <h3 style="align-content: center;">Content Chat</h3>
+          <div id="textChat" >long1: hello</div>
+        </div>
+        <input type="text" id="inputText">
+        <button type="submit" id="sendText">Send</button><br>
+        <a href="/users">Quay lại Tạo Room</a>
+      </div>
+    
+  </div>
+</body>
+</html>
+
+
+
+
+
+

@@ -31,3 +31,15 @@
       width:100%;
     }
   }
+  .textChat{
+    padding: 10px 10px
+  }
+  #inputText{
+
+  }
+  #sendText {
+
+  }
+  #usernameChat{
+    font-size: 20px;
+  }

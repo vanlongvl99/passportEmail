@@ -7,7 +7,15 @@
       <h5 style="color: red; "><% include ./messages %></h5>
       <form action="/users/register" method="POST">
         <div class="form-group">
-          <label for="username">Email:</label>
+          <label for="email"">Email của bạn:</label>
+          <input
+            id="email""
+            name="email""
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="username">Tên đăng nhập:</label>
           <input
             id="username"
             name="username"

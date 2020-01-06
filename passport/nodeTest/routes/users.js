@@ -35,6 +35,11 @@ module.exports = function(app, passport, errors) {
     req.logout();
     res.redirect('/users/login');
 });
+  app.get('/roomChat', function(req, res){
+    res.render('chatPage', {
+      user: req.user
+    })
+  })
 
   require('./registerProcess')(app, passport, errors)
   require('./changePassProcess')(app, errors)

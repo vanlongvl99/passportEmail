@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <title>Profile</title>
   <script></script>
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="xuli.js"></script>
   <script src="jquery.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="xuliProfile.js"></script>
   <link rel="stylesheet" type="text/css" href="layout.css" />
 </head>
 <body style="background-color: #f5e9e9;">
@@ -17,7 +17,8 @@
            Đăng nhập thành công
         </h1>
         <p style="color: blue;" class="lead mb-3">Welcome %></p>
-        <p style="color: blue;" class="lead mb-3">Username: <%= user.username %></p>
+        <p class="lead mb-3">Username:</p>
+        <p style="color: blue;" id="usernameChat"><%= user.username %></p>
         <p class="lead mt-4">
              <a href="/users/logout">Đăng xuất</a><br>
              <a href="/users/changePassword">Đổi mật khẩu</a>
@@ -25,14 +26,23 @@
       </div>      
     </div>
     <div class="col-md-6 m-auto" >
-      <!-- <div class="col-md-6 m-auto" > -->
+        <form method="get" action="/roomChat">
           <input type="text" id="createRoom">
-      <input type="button" id="btnRoom1" value="Tạo phòng">
-      <input type="text" id="joinRoom">
-      <input type="button" id="btnRoom2" value="Vào phòng">
+          <button type="submit" id="btnCreateRoom" >Tạo phòng</button>
+        </form>
 
       <h5>Room hiện có</h5>
-      <div id="listRooms"></div>
+      <div id="listRooms">
+        <form action="/roomChat">
+          <select name="rooms" id="selectRoom" size="5">
+            <option value="room1">room1</option>
+            <option value="room2">room2</option>
+            <option value="room2">room2</option>
+            <option value="room3 ">room3</option>
+          </select>
+          <button type="submit" id="btnchooseRoom">Chọn Room</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>

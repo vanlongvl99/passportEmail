@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport');
 
 const bodyparser = require('body-parser');
-const port = process.env.port || 2000 ;
+const port = process.env.port || 2006 ;
 var errors = []
 require('./config/passport')(passport, port, app, errors);
 

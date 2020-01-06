@@ -1,6 +1,7 @@
 
 body{
   background-color: #dee6e3;
+  display: block;
 }
 
 .menu {
@@ -50,6 +51,7 @@ body{
     font-size: 20px;
   }
   #roomSpace {
+    display: inline-block;
     width: 30%;
     float: left;
   }

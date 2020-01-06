@@ -1,5 +1,5 @@
 
-var socket = io("http://localhost:2000");
+var socket = io("http://localhost:2004");
 
 socket.on('server-send-listRoom', function(data){
     $("#listRoom").html("")

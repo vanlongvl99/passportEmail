@@ -7,7 +7,15 @@
             <h5 style="color: red; background-color: lightcoral;"><% include ./messages %></h5>
             <form action="/users/register" method="POST">
               <div class="form-group">
-                <label for="email">Username:</label>
+                <label for="email">email:</label>
+                <input
+                  id="email"
+                  name="email"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label for="username">Username:</label>
                 <input
                   id="username"
                   name="username"

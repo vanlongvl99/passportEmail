@@ -1,5 +1,5 @@
 
-var socket = io('http://localhost:3001')
+var socket = io('http://localhost:4001/roomChat')
 socket.on('join-room-page', function(data){
     // $("#roomSpace").show()
     // $("#chatSpace").hide()
